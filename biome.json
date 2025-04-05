@@ -1,15 +1,19 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
-  "organizeImports": {
-    "enabled": true
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true
+    "$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
+    "organizeImports": {
+        "enabled": true
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "a11y": {
+                "useSemanticElements": "off",
+                "useKeyWithClickEvents": "off"
+            }
+        }
+    },
+    "files": {
+        "ignore": ["dist/**", "*.js", "*.cjs", "*.mjs", "*.spec.ts"]
     }
-  },
-  "files": {
-    "ignore": ["dist/**", "*.js", "*.cjs", "*.mjs", "*.spec.ts"]
-  }
 }
