@@ -18,7 +18,7 @@ nodeApp.use(compress());
 nodeApp.use(
 	"/*",
 	serveStatic({
-		root: "./client/",
+		root: "./dist/client/",
 	}),
 );
 
