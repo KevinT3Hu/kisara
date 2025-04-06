@@ -2,12 +2,22 @@ import { useEffect, useMemo, useState } from "react";
 import type { Data } from "./+data";
 import { usePageContext } from "vike-react/usePageContext";
 import cn from "classnames";
-import { navigate } from "vike/client/router";
+import { navigate, reload } from "vike/client/router";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
+import { onRemoveAnime } from "./List.telefunc";
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover";
+import { toast } from "sonner";
 
 export default function AnimeCard({ item }: { item: Data["data"][number] }) {
     const pageContext = usePageContext();
+
+    const [removing, setRemoving] = useState(false);
+
     const selected = useMemo(
         () => pageContext.routeParams.animeId === item.anime.id.toString(),
         [pageContext.routeParams.animeId, item.anime.id]
@@ -16,6 +26,19 @@ export default function AnimeCard({ item }: { item: Data["data"][number] }) {
         const url = `https://bgm.tv/subject/${item.anime.id}`;
         // open in new tab
         window.open(url, "_blank", "noopener,noreferrer");
+    }
+    function removeAnime() {
+        setRemoving(true);
+        onRemoveAnime(item.anime.id)
+            .then(() => {
+                reload();
+            })
+            .catch((err) => {
+                toast.error(err.message);
+            })
+            .finally(() => {
+                setRemoving(false);
+            });
     }
 
     return (
@@ -52,7 +75,23 @@ export default function AnimeCard({ item }: { item: Data["data"][number] }) {
                     Bangumi
                     <ExternalLink />
                 </Button>
-                <Button variant="outline">移除</Button>
+                <Popover>
+                    <PopoverTrigger asChild>
+                        <Button variant="outline">移除</Button>
+                    </PopoverTrigger>
+                    <PopoverContent>
+                        <div className="flex flex-col">
+                            <Button
+                                variant="destructive"
+                                className="w-full text-left"
+                                onClick={removeAnime}
+                                disabled={removing}
+                            >
+                                确定移除
+                            </Button>
+                        </div>
+                    </PopoverContent>
+                </Popover>
             </div>
         </div>
     );

@@ -200,3 +200,26 @@ export async function updateEpisodeWatched(
 		.where(eq(animeTable.id, animeId))
 		.execute();
 }
+
+export async function getIsAnimeInList(animeId: number, listName?: string) {
+	if (!listName) {
+		return db
+			.select()
+			.from(animeTable)
+			.where(eq(animeTable.id, animeId))
+			.then((rows) => {
+				return rows.length > 0;
+			});
+	}
+	return db
+		.select()
+		.from(animeTable)
+		.where(and(eq(animeTable.id, animeId), eq(animeTable.listName, listName)))
+		.then((rows) => {
+			return rows.length > 0;
+		});
+}
+
+export async function removeAnime(animeId: number) {
+	return db.delete(animeTable).where(eq(animeTable.id, animeId)).execute();
+}

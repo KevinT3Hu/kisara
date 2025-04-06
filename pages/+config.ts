@@ -7,5 +7,6 @@ export { config };
 const config = {
 	Layout: LayoutDefault,
 	title: "Kisara",
+	lang: "cms-Hans",
 	extends: [vikeReact],
 } satisfies Config;

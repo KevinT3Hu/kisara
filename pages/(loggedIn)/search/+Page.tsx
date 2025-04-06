@@ -4,6 +4,7 @@ import {
     ArrowDownNarrowWide,
     CalendarCheck2,
     CalendarIcon,
+    ChevronLeft,
     Search,
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -164,6 +165,13 @@ export default function Page() {
     return (
         <div className="flex flex-col items-center justify-start md:px-[300px] h-screen">
             <div className="flex flex-row my-4 w-full gap-2">
+                <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => window.history.back()}
+                >
+                    <ChevronLeft />
+                </Button>
                 <Input
                     type="text"
                     placeholder="搜索..."

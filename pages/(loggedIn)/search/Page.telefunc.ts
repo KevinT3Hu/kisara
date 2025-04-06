@@ -1,4 +1,8 @@
-import { addToListQuery, insertEpisodesQuery } from "@/database/animeQueries";
+import {
+	addToListQuery,
+	getIsAnimeInList,
+	insertEpisodesQuery,
+} from "@/database/animeQueries";
 import type { Anime } from "./anime";
 import { Abort, getContext } from "telefunc";
 
@@ -6,6 +10,10 @@ export async function onAddToList(anime: Anime, list: string) {
 	const { session } = getContext();
 	if (!session) {
 		throw Abort("Not logged in");
+	}
+
+	if (await getIsAnimeInList(anime.id)) {
+		throw Abort("Already in list");
 	}
 
 	await addToListQuery(
@@ -68,4 +76,12 @@ export async function onAddToList(anime: Anime, list: string) {
 	}
 
 	await insertEpisodesQuery(anime.id, data);
+}
+
+export async function onGetIsAnimeInList(id: number) {
+	const { session } = getContext();
+	if (!session) {
+		throw Abort("Not logged in");
+	}
+	return getIsAnimeInList(id);
 }

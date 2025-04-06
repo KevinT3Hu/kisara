@@ -5,7 +5,7 @@ import type { Data } from "./+data";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent } from "@/components/ui/popover";
 import { PopoverTrigger } from "@radix-ui/react-popover";
-import { onAddToList } from "./Page.telefunc";
+import { onAddToList, onGetIsAnimeInList } from "./Page.telefunc";
 import {
     Dialog,
     DialogContent,
@@ -14,7 +14,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { navigate } from "vike/client/router";
 import { toast } from "sonner";
 
@@ -22,6 +22,18 @@ export default function SearchAnimeItem({ anime }: { anime: Anime }) {
     const lists = useData<Data>();
 
     const [newListName, setNewListName] = useState("");
+
+    const [isInList, setIsInList] = useState(false);
+
+    useEffect(() => {
+        onGetIsAnimeInList(anime.id)
+            .then((res) => {
+                setIsInList(res);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }, [anime.id]);
 
     function addToList(list: string) {
         onAddToList(
@@ -67,8 +79,9 @@ export default function SearchAnimeItem({ anime }: { anime: Anime }) {
                         <Button
                             variant="outline"
                             className="w-40 hover:cursor-pointer"
+                            disabled={isInList}
                         >
-                            添加
+                            {isInList ? "已添加" : "添加"}
                         </Button>
                     </PopoverTrigger>
                     <PopoverContent>

@@ -1,5 +1,5 @@
 import { getAnimeById } from "@/database/animeQueries";
-import { render } from "vike/abort";
+import { redirect } from "vike/abort";
 import type { PageContext } from "vike/types";
 import { data as outerData } from "../+data";
 
@@ -10,7 +10,8 @@ export async function data(pageContext: PageContext) {
 	const animeId = pageContext.routeParams.animeId;
 
 	const { anime, episodes } = await getAnimeById(Number(animeId)).catch(() => {
-		throw render(404);
+		const list = pageContext.routeParams.name;
+		throw redirect(`/list/${list}`);
 	});
 
 	const outerDataRet = await outerData(pageContext);
