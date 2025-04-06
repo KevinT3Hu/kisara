@@ -24,7 +24,17 @@ export default function SearchAnimeItem({ anime }: { anime: Anime }) {
     const [newListName, setNewListName] = useState("");
 
     function addToList(list: string) {
-        onAddToList(anime, list)
+        onAddToList(
+            {
+                id: anime.id,
+                name: anime.name,
+                name_cn: anime.name_cn,
+                summary: anime.summary,
+                date: anime.date,
+                images: anime.images,
+            }, // to avoid telefunc shield error
+            list
+        )
             .then(() => {
                 navigate(`/list/${list}`);
             })
