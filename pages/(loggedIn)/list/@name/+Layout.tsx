@@ -11,6 +11,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
     const [animes, setAnimes] = useState<Data["data"]>([]);
 
+    useEffect(() => {
+        localStorage.setItem("lastList", selected);
+    });
+
     return (
         <ListPage
             lists={lists}

@@ -7,6 +7,5 @@ export { config };
 const config = {
 	Layout: LayoutDefault,
 	title: "Kisara",
-	description: "Track your anime experience",
 	extends: [vikeReact],
 } satisfies Config;

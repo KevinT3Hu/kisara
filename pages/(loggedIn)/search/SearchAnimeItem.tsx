@@ -68,7 +68,7 @@ export default function SearchAnimeItem({ anime }: { anime: Anime }) {
                             variant="outline"
                             className="w-40 hover:cursor-pointer"
                         >
-                            Add to List
+                            添加
                         </Button>
                     </PopoverTrigger>
                     <PopoverContent>
@@ -92,18 +92,18 @@ export default function SearchAnimeItem({ anime }: { anime: Anime }) {
                                         variant="ghost"
                                         className="w-full text-left"
                                     >
-                                        Create New List
+                                        创建新列表
                                     </Button>
                                 </DialogTrigger>
                                 <DialogContent>
                                     <DialogHeader>
                                         <h2 className="text-lg font-bold">
-                                            Create New List
+                                            创建新列表
                                         </h2>
                                     </DialogHeader>
                                     <Input
                                         type="text"
-                                        placeholder="List Name..."
+                                        placeholder="列表名称..."
                                         value={newListName}
                                         onChange={(e) =>
                                             setNewListName(e.target.value)
@@ -119,7 +119,7 @@ export default function SearchAnimeItem({ anime }: { anime: Anime }) {
                                                 addToList(newListName);
                                             }}
                                         >
-                                            Create
+                                            创建
                                         </Button>
                                         <Button
                                             variant="ghost"
@@ -127,7 +127,7 @@ export default function SearchAnimeItem({ anime }: { anime: Anime }) {
                                                 setNewListName("");
                                             }}
                                         >
-                                            Cancel
+                                            取消
                                         </Button>
                                     </DialogFooter>
                                 </DialogContent>

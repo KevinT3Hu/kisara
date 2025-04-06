@@ -46,7 +46,7 @@ export default function Page() {
                 />
                 <Card className="w-full">
                     <CardHeader>
-                        <h2>Episodes</h2>
+                        <h2>章节</h2>
                     </CardHeader>
                     <CardContent>
                         <div className="flex flex-wrap gap-x-2 gap-y-1">
@@ -58,11 +58,11 @@ export default function Page() {
                 </Card>
                 <Card className="w-full">
                     <CardHeader>
-                        <h2>Summary</h2>
+                        <h2>简介</h2>
                     </CardHeader>
                     <CardContent>
                         {fetching ? (
-                            <p>Loading...</p>
+                            <p>加载中...</p>
                         ) : (
                             <p>{fetchedAnime?.summary}</p>
                         )}
@@ -70,11 +70,11 @@ export default function Page() {
                 </Card>
                 <Card className="w-full">
                     <CardHeader>
-                        <h2>Tags</h2>
+                        <h2>标签</h2>
                     </CardHeader>
                     <CardContent>
                         {fetching ? (
-                            <p>Loading...</p>
+                            <p>加载中...</p>
                         ) : (
                             <div className="flex flex-wrap">
                                 {fetchedAnime?.tags.map((tag) => (

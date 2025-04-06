@@ -11,7 +11,7 @@ export default function Page() {
             sidePanel={
                 <div className="flex flex-col items-center justify-center w-full h-full">
                     <h1 className="text-xl text-gray-400">
-                        Select a list to view
+                        在左边选择一个列表
                     </h1>
                 </div>
             }

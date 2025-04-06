@@ -42,7 +42,7 @@ export default function Page() {
             } else {
                 form.setError("password", {
                     type: "manual",
-                    message: "Invalid password",
+                    message: "密码错误",
                 });
             }
         });
@@ -65,7 +65,7 @@ export default function Page() {
                                 name="password"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Password</FormLabel>
+                                        <FormLabel>密码</FormLabel>
                                         <FormControl>
                                             <Input
                                                 placeholder="Password"
@@ -81,7 +81,7 @@ export default function Page() {
                                 className="w-full hover:cursor-pointer"
                                 type="submit"
                             >
-                                Login
+                                登录
                             </Button>
                         </form>
                     </Form>

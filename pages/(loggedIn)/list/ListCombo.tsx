@@ -41,13 +41,13 @@ export default function ListCombo(props: {
                     aria-expanded={open}
                     className="justify-between"
                 >
-                    {props.selected || "Select a list..."}
+                    {props.selected || "选择列表..."}
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-full p-0">
                 <Command>
-                    <CommandInput placeholder="Search list..." />
+                    <CommandInput placeholder="搜索列表..." />
                     <CommandList>
                         <CommandEmpty>No list found.</CommandEmpty>
                         <CommandGroup>

@@ -52,7 +52,7 @@ export default function AnimeCard({ item }: { item: Data["data"][number] }) {
                     Bangumi
                     <ExternalLink />
                 </Button>
-                <Button variant="outline">Remove</Button>
+                <Button variant="outline">移除</Button>
             </div>
         </div>
     );

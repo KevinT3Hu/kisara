@@ -68,7 +68,7 @@ export default function EpisodeBlock({ ep }: { ep: Data["episodes"][number] }) {
                             disabled={loading}
                             onClick={() => markEpisode(false)}
                         >
-                            Mark as Unwatched
+                            标记为未看
                         </Button>
                     ) : (
                         <Button
@@ -76,7 +76,7 @@ export default function EpisodeBlock({ ep }: { ep: Data["episodes"][number] }) {
                             disabled={loading}
                             onClick={() => markEpisode(true)}
                         >
-                            Mark as Watched
+                            标记为已看
                         </Button>
                     )}
                 </div>
